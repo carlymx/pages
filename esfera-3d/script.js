@@ -4,6 +4,12 @@ let isMouseDown = false;
 let previousMousePosition = { x: 0, y: 0 };
 let earthTexture;
 
+// Variables para controles táctiles
+let isTouchDown = false;
+let previousTouchPosition = { x: 0, y: 0 };
+let initialPinchDistance = 0;
+let initialCameraZ = 0;
+
 // Inicializar la aplicación
 function init() {
     // Crear escena
@@ -17,8 +23,8 @@ function init() {
         0.1,
         1000
     );
-    camera.position.z = 6;
-    camera.position.y = 0;
+    camera.position.z = 7;
+    camera.position.y = -0.45;
     camera.position.x = 0;
     
     // Crear renderizador
@@ -47,6 +53,11 @@ function init() {
     document.addEventListener('mouseup', onMouseUp);
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('wheel', onMouseWheel);
+    
+    // Event listeners para controles táctiles
+    document.addEventListener('touchstart', onTouchStart, { passive: false });
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd);
     
     // Iniciar animación
     animate();
@@ -103,8 +114,8 @@ function loadEarthTexture() {
 
 // Crear esfera con textura de la Tierra
 function createSphere() {
-    // Geometría de la esfera con más segmentos para mejor calidad
-    const geometry = new THREE.SphereGeometry(3, 128, 128);
+    // Geometría de la esfera más pequeña para ocupar el 50% del espacio vertical
+    const geometry = new THREE.SphereGeometry(2, 128, 128);
     
     // Material con textura de la Tierra
     const material = new THREE.MeshStandardMaterial({
@@ -123,7 +134,7 @@ function createSphere() {
     scene.add(sphere);
     
     // Añadir atmósfera sutil
-    const atmosphereGeometry = new THREE.SphereGeometry(3.05, 64, 64);
+    const atmosphereGeometry = new THREE.SphereGeometry(2.05, 64, 64);
     const atmosphereMaterial = new THREE.MeshBasicMaterial({
         color: 0x87CEEB,
         transparent: true,
@@ -138,8 +149,8 @@ function createSphere() {
 function animate() {
     requestAnimationFrame(animate);
     
-    // Rotación automática suave (solo si no hay interacción con el ratón)
-    if (!isMouseDown) {
+    // Rotación automática suave (solo si no hay interacción con el ratón o táctil)
+    if (!isMouseDown && !isTouchDown) {
         sphere.rotation.y += 0.002;
     }
     
@@ -196,12 +207,90 @@ function onMouseWheel(event) {
     camera.position.z = Math.max(3, Math.min(20, camera.position.z));
 }
 
+// Funciones para controles táctiles
+function onTouchStart(event) {
+    event.preventDefault();
+    
+    if (event.touches.length === 1) {
+        // Un dedo - rotación
+        isTouchDown = true;
+        previousTouchPosition = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        };
+    } else if (event.touches.length === 2) {
+        // Dos dedos - zoom (pinch)
+        const touch1 = event.touches[0];
+        const touch2 = event.touches[1];
+        initialPinchDistance = Math.sqrt(
+            Math.pow(touch2.clientX - touch1.clientX, 2) +
+            Math.pow(touch2.clientY - touch1.clientY, 2)
+        );
+        initialCameraZ = camera.position.z;
+    }
+}
+
+function onTouchMove(event) {
+    event.preventDefault();
+    
+    if (event.touches.length === 1 && isTouchDown) {
+        // Rotación con un dedo
+        const currentTouch = event.touches[0];
+        const deltaMove = {
+            x: currentTouch.clientX - previousTouchPosition.x,
+            y: currentTouch.clientY - previousTouchPosition.y
+        };
+        
+        // Rotación más suave para pantallas táctiles
+        sphere.rotation.y += deltaMove.x * 0.008;
+        sphere.rotation.x += deltaMove.y * 0.008;
+        
+        // Efecto de brillo basado en la velocidad del movimiento
+        const speed = Math.sqrt(deltaMove.x * deltaMove.x + deltaMove.y * deltaMove.y);
+        sphere.material.emissiveIntensity = 0.2 + (speed / 100) * 0.5;
+        
+        previousTouchPosition = {
+            x: currentTouch.clientX,
+            y: currentTouch.clientY
+        };
+    } else if (event.touches.length === 2) {
+        // Zoom con dos dedos (pinch)
+        const touch1 = event.touches[0];
+        const touch2 = event.touches[1];
+        const currentPinchDistance = Math.sqrt(
+            Math.pow(touch2.clientX - touch1.clientX, 2) +
+            Math.pow(touch2.clientY - touch1.clientY, 2)
+        );
+        
+        if (initialPinchDistance > 0) {
+            const pinchRatio = initialPinchDistance / currentPinchDistance;
+            camera.position.z = initialCameraZ * pinchRatio;
+            camera.position.z = Math.max(3, Math.min(20, camera.position.z));
+        }
+    }
+}
+
+function onTouchEnd(event) {
+    isTouchDown = false;
+    initialPinchDistance = 0;
+}
+
 // Actualizar título y descripción cuando se cargue
 function updateText() {
     const title = document.querySelector('h1');
     const description = document.querySelector('p');
     if (title) title.textContent = 'Planeta Tierra 3D';
-    if (description) description.textContent = 'Mueve el ratón para explorar el planeta';
+    
+    // Detectar si es dispositivo móvil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (description) {
+        if (isMobile) {
+            description.textContent = 'Desliza para rotar • Pellizca para hacer zoom';
+        } else {
+            description.textContent = 'Mueve el ratón para explorar el planeta';
+        }
+    }
 }
 
 // Inicializar cuando el DOM esté listo
