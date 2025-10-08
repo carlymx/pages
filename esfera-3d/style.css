@@ -84,10 +84,45 @@ body::before {
 /* Responsive */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
     }
     
     p {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    #container {
+        top: 10px;
+    }
+    
+    #canvas-container {
+        height: 60vh;
+        top: 20vh;
+    }
+}
+
+/* Para pantallas muy pequeñas (móviles en vertical) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        font-size: 0.8rem;
+    }
+    
+    #canvas-container {
+        height: 70vh;
+        top: 15vh;
+    }
+}
+
+/* Para tablets y dispositivos con pantalla más grande */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #canvas-container {
+        height: 55vh;
+        top: 22.5vh;
     }
 }

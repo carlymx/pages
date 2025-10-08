@@ -10,6 +10,9 @@ let previousTouchPosition = { x: 0, y: 0 };
 let initialPinchDistance = 0;
 let initialCameraZ = 0;
 
+// Detectar si es dispositivo móvil
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 // Inicializar la aplicación
 function init() {
     // Crear escena
@@ -23,8 +26,9 @@ function init() {
         0.1,
         1000
     );
-    camera.position.z = 7;
-    camera.position.y = -0.45;
+    // Ajustar posición de cámara según dispositivo
+    camera.position.z = isMobile ? 5 : 7;
+    camera.position.y = isMobile ? 0 : -0.45;
     camera.position.x = 0;
     
     // Crear renderizador
@@ -114,8 +118,11 @@ function loadEarthTexture() {
 
 // Crear esfera con textura de la Tierra
 function createSphere() {
-    // Geometría de la esfera más pequeña para ocupar el 50% del espacio vertical
-    const geometry = new THREE.SphereGeometry(2, 128, 128);
+    // Ajustar tamaño de la esfera según el dispositivo
+    const sphereSize = isMobile ? 1.5 : 2;
+    
+    // Geometría de la esfera adaptada al dispositivo
+    const geometry = new THREE.SphereGeometry(sphereSize, 128, 128);
     
     // Material con textura de la Tierra
     const material = new THREE.MeshStandardMaterial({
@@ -134,7 +141,7 @@ function createSphere() {
     scene.add(sphere);
     
     // Añadir atmósfera sutil
-    const atmosphereGeometry = new THREE.SphereGeometry(2.05, 64, 64);
+    const atmosphereGeometry = new THREE.SphereGeometry(sphereSize + 0.05, 64, 64);
     const atmosphereMaterial = new THREE.MeshBasicMaterial({
         color: 0x87CEEB,
         transparent: true,
@@ -241,9 +248,12 @@ function onTouchMove(event) {
             y: currentTouch.clientY - previousTouchPosition.y
         };
         
+        // Ajustar sensibilidad según dispositivo
+        const sensitivity = isMobile ? 0.01 : 0.008;
+        
         // Rotación más suave para pantallas táctiles
-        sphere.rotation.y += deltaMove.x * 0.008;
-        sphere.rotation.x += deltaMove.y * 0.008;
+        sphere.rotation.y += deltaMove.x * sensitivity;
+        sphere.rotation.x += deltaMove.y * sensitivity;
         
         // Efecto de brillo basado en la velocidad del movimiento
         const speed = Math.sqrt(deltaMove.x * deltaMove.x + deltaMove.y * deltaMove.y);
