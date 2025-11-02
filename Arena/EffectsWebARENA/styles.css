@@ -1,0 +1,712 @@
+/* Effects WebARENA - CSS Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #4a6cf7;
+}
+
+.header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.theme-toggle:hover {
+    background-color: #3a5ae0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    position: relative;
+}
+
+/* Las tarjetas ahora usan un tema independiente */
+.card.dark-theme {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.framework-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f8f9fa;
+    z-index: 2;
+}
+
+body.dark-theme .framework-icons {
+    background-color: #2a2a2a;
+}
+
+.card.dark-theme .framework-icons {
+    background-color: #2a2a2a;
+}
+
+.framework-icon {
+    display: inline-block;
+    padding: 5px 12px;
+    margin-left: 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.framework-icon.active {
+    background-color: #4a6cf7;
+    color: white;
+}
+
+.framework-icon:hover {
+    background-color: #dae0e5;
+}
+
+body.dark-theme .framework-icon {
+    background-color: #3a3a3a;
+    color: #d0d0d0;
+}
+
+.card.dark-theme .framework-icon {
+    background-color: #3a3a3a;
+    color: #d0d0d0;
+}
+
+body.dark-theme .framework-icon:hover {
+    background-color: #4a4a4a;
+}
+
+.card.dark-theme .framework-icon:hover {
+    background-color: #4a4a4a;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card h3 {
+    margin-bottom: 20px;
+    color: #4a6cf7;
+}
+
+.effect-example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.effect-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.effect-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    text-align: right;
+}
+
+body.dark-theme .card-footer {
+    background-color: #2a2a2a;
+    border-top: 1px solid #3a3a3a;
+}
+
+.card.dark-theme .card-footer {
+    background-color: #2a2a2a;
+    border-top: 1px solid #3a3a3a;
+}
+
+.theme-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.theme-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Framework Styles using card classes */
+.card.framework-default .card-content .effect-btn,
+.card.framework-default .card-content .effect-box,
+.card.framework-default .card-content .text-effect,
+.card.framework-default .card-content .attention-element,
+.card.framework-default .card-content .transform-element {
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 108, 247, 0.4);
+}
+
+.card.framework-animate .card-content .effect-btn,
+.card.framework-animate .card-content .effect-box,
+.card.framework-animate .card-content .text-effect,
+.card.framework-animate .card-content .attention-element,
+.card.framework-animate .card-content .transform-element {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.card.framework-tailwind .card-content .effect-btn,
+.card.framework-tailwind .card-content .effect-box,
+.card.framework-tailwind .card-content .text-effect,
+.card.framework-tailwind .card-content .attention-element,
+.card.framework-tailwind .card-content .transform-element {
+    background: linear-gradient(45deg, #0ea5e9, #0d9488);
+    color: white;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+
+.card.framework-bootstrap .card-content .effect-btn,
+.card.framework-bootstrap .card-content .effect-box,
+.card.framework-bootstrap .card-content .text-effect,
+.card.framework-bootstrap .card-content .attention-element,
+.card.framework-bootstrap .card-content .transform-element {
+    background: linear-gradient(45deg, #0d6efd, #6610f2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+}
+
+/* Hover Effects */
+.hover-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+}
+
+.card.framework-default .card-content .hover-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(74, 108, 247, 0.6);
+}
+
+.card.framework-animate .card-content .hover-button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(255, 99, 132, 0.6);
+}
+
+.card.framework-tailwind .card-content .hover-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.6);
+}
+
+.card.framework-bootstrap .card-content .hover-button:hover {
+    transform: scale(1.05) translateX(5px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+}
+
+/* Transition Effects */
+.transition-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+}
+
+.card.framework-default .card-content .transition-box:hover {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(45deg, #6a11cb, #4a6cf7);
+    border-radius: 50%;
+}
+
+.card.framework-animate .card-content .transition-box:hover {
+    transform: rotate(180deg) scale(1.2);
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+}
+
+.card.framework-tailwind .card-content .transition-box:hover {
+    transform: skew(15deg);
+    background: linear-gradient(45deg, #0ea5e9, #0d9488);
+}
+
+.card.framework-bootstrap .card-content .transition-box:hover {
+    transform: rotateY(180deg);
+    background: linear-gradient(45deg, #0d6efd, #6610f2);
+}
+
+/* Animation Effects */
+.animated-element {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.card.framework-default .card-content .animated-element {
+    animation-name: bounce;
+}
+
+.card.framework-animate .card-content .animated-element {
+    animation-name: pulse;
+}
+
+.card.framework-tailwind .card-content .animated-element {
+    animation-name: spin;
+}
+
+.card.framework-bootstrap .card-content .animated-element {
+    animation-name: fadeInOut;
+}
+
+/* Keyframe Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Transform Effects */
+.transform-element {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.card.framework-default .card-content .transform-element:hover {
+    transform: scale(1.3) rotate(15deg);
+}
+
+.card.framework-animate .card-content .transform-element:hover {
+    transform: rotateX(180deg);
+}
+
+.card.framework-tailwind .card-content .transform-element:hover {
+    transform: rotateY(180deg);
+}
+
+.card.framework-bootstrap .card-content .transform-element:hover {
+    transform: skew(20deg, 10deg);
+}
+
+/* Shadow Effects */
+.shadow-element {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.card.framework-default .card-content .shadow-element:hover {
+    box-shadow: 0 10px 30px rgba(74, 108, 247, 0.7);
+}
+
+.card.framework-animate .card-content .shadow-element:hover {
+    box-shadow: 0 0 30px rgba(255, 99, 132, 0.8);
+}
+
+.card.framework-tailwind .card-content .shadow-element:hover {
+    box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.7);
+}
+
+.card.framework-bootstrap .card-content .shadow-element:hover {
+    box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.75);
+}
+
+/* Gradient Effects */
+.gradient-element {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+}
+
+.card.framework-default .card-content .gradient-element {
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+}
+
+.card.framework-animate .card-content .gradient-element {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+}
+
+.card.framework-tailwind .card-content .gradient-element {
+    background: linear-gradient(45deg, #0ea5e9, #0d9488);
+}
+
+.card.framework-bootstrap .card-content .gradient-element {
+    background: linear-gradient(45deg, #0d6efd, #6610f2);
+}
+
+/* Glassmorphism Effects */
+.glass-element {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .glass-element {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.card.dark-theme .glass-element {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Estilos generales para tema oscuro en tarjetas individuales */
+.card.dark-theme {
+    color: #e0e0e0;
+}
+
+.card.dark-theme .card-content h3 {
+    color: #4a6cf7;
+}
+
+/* Actualizar estilos específicos para elementos de efecto en tarjetas con tema oscuro */
+.card.dark-theme .effect-btn,
+.card.dark-theme .effect-box {
+    /* Estos elementos pueden tener estilos diferentes en modo oscuro */
+}
+
+.card.framework-default .card-content .glass-element {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #333;
+}
+
+.card.framework-animate .card-content .glass-element {
+    background: rgba(255, 107, 107, 0.2);
+    backdrop-filter: blur(15px);
+}
+
+.card.framework-tailwind .card-content .glass-element {
+    background: rgba(14, 165, 233, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.card.framework-bootstrap .card-content .glass-element {
+    background: rgba(13, 110, 253, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Text Effects */
+.text-effect {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.card.framework-default .card-content .text-effect {
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 5px rgba(74, 108, 247, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(106, 17, 203, 0.8);
+    }
+}
+
+.card.framework-animate .card-content .text-effect {
+    color: #ff6b6b;
+    animation: textPulse 1.5s infinite;
+}
+
+@keyframes textPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.card.framework-tailwind .card-content .text-effect {
+    background: linear-gradient(45deg, #0ea5e9, #0d9488);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card.framework-bootstrap .card-content .text-effect {
+    color: #0d6efd;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Loading Animations */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(74, 108, 247, 0.2);
+    border-top: 5px solid #4a6cf7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.card.framework-default .card-content .loading-spinner {
+    border-top: 5px solid #4a6cf7;
+}
+
+.card.framework-animate .card-content .loading-spinner {
+    border-top: 5px solid #ff6b6b;
+    animation: spin 1.5s linear infinite;
+}
+
+.card.framework-tailwind .card-content .loading-spinner {
+    border-top: 5px solid #0ea5e9;
+    animation: spin 0.8s linear infinite;
+}
+
+.card.framework-bootstrap .card-content .loading-spinner {
+    border-top: 5px solid #0d6efd;
+    animation: spin 1.2s linear infinite;
+}
+
+/* Attention Seekers */
+.attention-element {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #4a6cf7, #6a11cb);
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+}
+
+.card.framework-default .card-content .attention-element {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.card.framework-animate .card-content .attention-element {
+    animation: wobble 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes wobble {
+    0% { transform: translateX(0); }
+    15% { transform: translateX(-10px) rotate(-5deg); }
+    30% { transform: translateX(8px) rotate(4deg); }
+    45% { transform: translateX(-6px) rotate(-3deg); }
+    60% { transform: translateX(4px) rotate(2deg); }
+    75% { transform: translateX(-2px) rotate(-1deg); }
+    100% { transform: translateX(0); }
+}
+
+.card.framework-tailwind .card-content .attention-element {
+    animation: bounce 0.8s;
+    animation-iteration-count: infinite;
+}
+
+.card.framework-bootstrap .card-content .attention-element {
+    animation: flash 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.5; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .header {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .card {
+        height: auto;
+    }
+}

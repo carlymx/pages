@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparativa de Frameworks CSS - WebARENA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .framework-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .framework-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .framework-description {
+            margin-top: 5px;
+            color: #555;
+        }
+        
+        .links {
+            margin-top: 15px;
+        }
+        
+        .link-item {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .link-item:hover {
+            background-color: #2980b9;
+        }
+        
+        .examples-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .example-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .example-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .example-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .example-link:hover {
+            background-color: #219653;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comparativa de Frameworks CSS</h1>
+        <p class="subtitle">Explora las diferentes alternativas y complementos a Tailwind CSS con ejemplos prácticos</p>
+    </header>
+    
+    <div class="container">
+        <section class="section">
+            <h2>Alternativas a la filosofía <em>utility-first</em></h2>
+            <ul class="framework-list">
+                <li>
+                    <span class="framework-name"><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></span>
+                    <div class="framework-description">
+                        Uno de los frameworks CSS más populares. Ofrece componentes listos para usar (botones, tarjetas, etc.), 
+                        un sistema de cuadrícula responsiva y utilidades para elementos interactivos.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Bulma</span>
+                    <div class="framework-description">
+                        Un framework CSS modular y ligero basado en Flexbox. No incluye JavaScript, 
+                        lo que permite usar tu propia lógica de programación.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Foundation</span>
+                    <div class="framework-description">
+                        Una biblioteca avanzada para crear sitios web y aplicaciones de manera rápida, 
+                        con componentes y utilidades para diseños modernos y responsivos.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Semantic UI</span>
+                    <div class="framework-description">
+                        Un framework que utiliza un lenguaje natural e intuitivo para crear interfaces de usuario. 
+                        Su objetivo es que el código sea semántico y legible.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Materialize</span>
+                    <div class="framework-description">
+                        Basado en los principios de Material Design de Google, proporciona componentes modernos 
+                        y un diseño limpio.
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>Proyectos con un enfoque <em>utility-first</em> similar</h2>
+            <ul class="framework-list">
+                <li>
+                    <span class="framework-name"><a href="https://unocss.dev/" target="_blank">UnoCSS</a></span>
+                    <div class="framework-description">
+                        Un motor de Atomic CSS a demanda que solo genera las utilidades que realmente se usan en tu proyecto, 
+                        lo que resulta en un menor tamaño de archivo final.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Basscss</span>
+                    <div class="framework-description">
+                        Un conjunto ligero de clases de utilidad CSS que prioriza la velocidad y la escalabilidad.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Tachyons</span>
+                    <div class="framework-description">
+                        Un framework anterior a Tailwind que también se basa en el principio <em>utility-first</em>.
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>Bibliotecas de componentes basadas en Tailwind</h2>
+            <ul class="framework-list">
+                <li>
+                    <span class="framework-name">daisyUI</span>
+                    <div class="framework-description">
+                        Una popular biblioteca de componentes que simplifica el desarrollo con Tailwind, 
+                        ofreciendo componentes con temas predefinidos.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Flowbite</span>
+                    <div class="framework-description">
+                        Una biblioteca de componentes interactivos de código abierto, diseñada para integrarse 
+                        perfectamente con Tailwind CSS.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name">Material Tailwind</span>
+                    <div class="framework-description">
+                        Proporciona componentes que combinan el diseño de Material Design con la flexibilidad de Tailwind CSS.
+                    </div>
+                </li>
+                <li>
+                    <span class="framework-name"><a href="https://www.hyperui.dev/" target="_blank">HyperUI</a></span>
+                    <div class="framework-description">
+                        Una colección de componentes de código abierto para Tailwind, que ofrece varios estilos y opciones.
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>Ionic: Complementario a Tailwind CSS</h2>
+            <p>
+                <a href="https://ionicframework.com/" target="_blank">Ionic</a> y Tailwind CSS no son similares ni compiten directamente, 
+                sino que son complementarios. Funcionan en capas distintas del desarrollo:
+            </p>
+            <p style="margin-top: 15px;">
+                Ionic es un framework de desarrollo de aplicaciones móviles multiplataforma que utiliza tecnologías web para crear 
+                la estructura, los componentes y la lógica de la aplicación, mientras que Tailwind CSS es un framework de CSS 
+                para el diseño visual que se utiliza para estilizar la interfaz de usuario con clases de utilidad.
+            </p>
+        </section>
+        
+        <section class="examples-section">
+            <h2>Explora Nuestros Ejemplos Prácticos</h2>
+            <p>Visualiza y compara las diferentes bibliotecas y frameworks con nuestras herramientas interactivas</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3 class="example-title">WebARENA Principal</h3>
+                    <p class="example-description">
+                        Comparativa de componentes UI de diferentes frameworks CSS como Bootstrap, Bulma, Foundation, etc.
+                    </p>
+                    <a href="./WebARENA/index.html" class="example-link" target="_blank">Ver Ejemplos</a>
+                </div>
+                
+                <div class="example-card">
+                    <h3 class="example-title">Effects WebARENA</h3>
+                    <p class="example-description">
+                        Comparativa de efectos CSS y animaciones de diferentes frameworks y bibliotecas.
+                    </p>
+                    <a href="./EffectsWebARENA/index.html" class="example-link" target="_blank">Ver Efectos</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Proyecto WebARENA - Comparativa de Frameworks y Bibliotecas CSS | Desarrollado con tecnologías web modernas</p>
+    </footer>
+</body>
+</html>

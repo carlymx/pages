@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effects WebARENA - Comparación de Efectos CSS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Effects WebARENA</h1>
+        <p>Comparativa de efectos CSS y animaciones</p>
+        <button id="theme-toggle" class="theme-toggle">
+            <i class="fas fa-moon"></i> Cambiar Tema
+        </button>
+    </div>
+    
+    <div class="container">
+        <!-- Hover Effects Card -->
+        <div class="card" id="hover-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efectos Hover</h3>
+                <div class="effect-example">
+                    <button class="hover-button effect-btn">Pasa el cursor aquí</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Transitions Card -->
+        <div class="card" id="transition-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Transiciones</h3>
+                <div class="effect-example">
+                    <div class="transition-box effect-box"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Animations Card -->
+        <div class="card" id="animation-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Animaciones</h3>
+                <div class="effect-example">
+                    <div class="animated-element effect-box"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Transform Card -->
+        <div class="card" id="transform-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efectos Transform</h3>
+                <div class="effect-example">
+                    <div class="transform-element effect-box">Transform</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Shadows Card -->
+        <div class="card" id="shadow-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efectos de Sombra</h3>
+                <div class="effect-example">
+                    <div class="shadow-element effect-box">Sombra</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Gradient Card -->
+        <div class="card" id="gradient-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efectos Gradiente</h3>
+                <div class="effect-example">
+                    <div class="gradient-element effect-box">Gradiente</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Glassmorphism Card -->
+        <div class="card" id="glass-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efecto Glassmorphism</h3>
+                <div class="effect-example">
+                    <div class="glass-element effect-box">Glassmorphism</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Text Effects Card -->
+        <div class="card" id="text-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Efectos de Texto</h3>
+                <div class="effect-example">
+                    <div class="text-effect">Texto Animado</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Loading Animations Card -->
+        <div class="card" id="loading-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Animaciones de Carga</h3>
+                <div class="effect-example">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+
+        <!-- Attention Seekers Card -->
+        <div class="card" id="attention-card">
+            <div class="framework-icons">
+                <span class="framework-icon active" data-framework="default">CSS</span>
+                <span class="framework-icon" data-framework="animate">Animate</span>
+                <span class="framework-icon" data-framework="tailwind">Tailwind</span>
+                <span class="framework-icon" data-framework="bootstrap">Bootstrap</span>
+            </div>
+            <div class="card-content">
+                <h3>Attention Seekers</h3>
+                <div class="effect-example">
+                    <div class="attention-element effect-btn">¡Mírame!</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="theme-btn">Cambiar Tema</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
