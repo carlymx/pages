@@ -6,77 +6,75 @@
 
 [Earth-3D](https://carlymx.github.io/pages/esfera-3d/)
 
-[Sudoku - Tema Nord](https://carlymx.github.io/pages/sudoku-nord/)
+[Sudoku - NordTheme](https://carlymx.github.io/pages/sudoku-nord/)
 
-## Descripción[Comparativa de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
+[WebArena - Ligth/Dark modes](https://carlymx.github.io/pages/themes/)
 
-Earth-3D
+## Description
 
-Sudoku - Tema Nord
+This repository contains a collection of interactive web projects and demonstration applications. It includes different applications such as WebArena (color theme explorer), interactive 3D sphere, Sudoku with Nord theme and other web projects.
 
-Este repositorio contiene una colección de proyectos web interactivos y aplicaciones de demostración. Incluye diferentes aplicaciones como WebArena (explorador de temas de color), esfera 3D interactiva, Sudoku con tema Nord y otros proyectos web.
+## Featured Projects
 
-## Proyectos Destacados
+### WebArena - Light/Dark Modes
 
-### WebArena - Modos Claro/Oscuro
+Interactive web application that allows exploring different popular color palettes for light and dark modes.
 
-Aplicación web interactiva que permite explorar diferentes paletas de colores populares para modos claro y oscuro.
+### Rotating 3D Sphere
 
-### Esfera 3D Giratoria
+Interactive 3D sphere visualization using Three.js that responds to mouse movement.
 
-Visualización interactiva de una esfera 3D utilizando Three.js que responde al movimiento del ratón.
+### Sudoku - Nord Theme
 
-### Sudoku - Tema Nord
+Implementation of the classic Sudoku game with Nord visual theme, difficulty controls and timer.
 
-Implementación del juego clásico de Sudoku con tema visual Nord, controles de dificultad y temporizador.
+### Themes
 
-### Temas
+Collection of tools for exploring different color palettes and light/dark modes.
 
-Colección de herramientas para explorar diferentes paletas de colores y modos claro/oscuro.
+## Features
 
-## Características
+- Interactive web projects
+- Responsive interfaces
+- Light and dark themes
+- Available source code
+- Documentation in multiple languages
 
-- Proyectos web interactivos
-- Interfaces responsivas
-- Temas claro y oscuro
-- Código fuente disponible
-- Documentación en múltiples idiomas
-
-## Tecnologías Utilizadas
+## Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript (ES6+)
-- Three.js (para gráficos 3D)
+- Three.js (for 3D graphics)
 - Web APIs
 
-## Instalación
+## Installation
 
-1. Clona o descarga los archivos del proyecto
-2. Abre el archivo `index.html` correspondiente en tu navegador web preferido
-3. ¡Comienza a explorar los diferentes proyectos!
+1. Clone or download the project files
+2. Open the corresponding `index.html` file in your preferred web browser
+3. Start exploring the different projects!
 
-## Uso
+## Usage
 
-Cada subdirectorio contiene un proyecto independiente con sus propias instrucciones de uso. Accede a cada proyecto individualmente para ver detalles específicos.
+Each subdirectory contains an independent project with its own usage instructions. Access each project individually for specific details.
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 pages/
-├── Arena/           # Proyecto WebArena
-├── esfera-3d/       # Esfera 3D interactiva
-├── sudoku-nord/     # Juego de Sudoku con tema Nord
-├── themes/          # Colección de temas y paletas de colores
-├── README.md        # Documentación en inglés
-├── README_ES.md     # Documentación en español
-├── QWEN.md          # Instrucciones para Qwen CLI
-└── .chat_log/       # Registro de conversaciones
+├── Arena/           # WebArena Project
+├── esfera-3d/       # Interactive 3D Sphere
+├── sudoku-nord/     # Sudoku game with Nord theme
+├── themes/          # Collection of themes and color palettes
+├── README.md        # English documentation
+├── README_ES.md     # Spanish documentation
+├── QWEN.md          # Qwen CLI instructions
+└── .chat_log/       # Conversation log
     └── resumen_conversacion.md
 ```
 
-## Archivos de Documentación
+## Documentation Files
 
-- [README en español](README_ES.md)
-- [Instrucciones para Qwen CLI](QWEN.md)
-- [Resumen de conversaciones](.chat_log/resumen_conversacion.md)
+- [README in Spanish](README_ES.md)
+- [Qwen CLI Instructions](QWEN.md)
+- [Conversation Summary](.chat_log/resumen_conversacion.md)
