@@ -2,17 +2,13 @@
 
 # pages
 
-[Comparative de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
+[Comparativa de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
 
 [Earth-3D](https://carlymx.github.io/pages/esfera-3d/)
 
 [Sudoku - Tema Nord](https://carlymx.github.io/pages/sudoku-nord/)
 
-## Descripción[Comparativa de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
-
-Earth-3D
-
-Sudoku - Tema Nord
+## Descripción
 
 Este repositorio contiene una colección de proyectos web interactivos y aplicaciones de demostración. Incluye diferentes aplicaciones como WebArena (explorador de temas de color), esfera 3D interactiva, Sudoku con tema Nord y otros proyectos web.
 
@@ -77,6 +73,6 @@ pages/
 
 ## Archivos de Documentación
 
-- [README en español](README_ES.md)
+- [README en inglés](README.md)
 - [Instrucciones para Qwen CLI](QWEN.md)
 - [Resumen de conversaciones](.chat_log/resumen_conversacion.md)

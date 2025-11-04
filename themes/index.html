@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebArena - Modos Claro/Oscuro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WebArena - Modos Claro/Oscuro</h1>
+            <p>Explora las paletas de colores más populares para modos claro y oscuro</p>
+        </header>
+
+        <div class="theme-selector">
+            <h2>Selecciona un tema:</h2>
+            <div class="theme-buttons">
+                <button class="theme-btn active" data-theme="github">GitHub</button>
+                <button class="theme-btn" data-theme="vscode">VS Code</button>
+                <button class="theme-btn" data-theme="dracula">Dracula</button>
+                <button class="theme-btn" data-theme="solarized">Solarized</button>
+                <button class="theme-btn" data-theme="one">One Theme</button>
+                <button class="theme-btn" data-theme="monokai">Monokai</button>
+                <button class="theme-btn" data-theme="material">Material</button>
+                <button class="theme-btn" data-theme="nord_polar_night">Nord Polar Night</button>
+                <button class="theme-btn" data-theme="nord_snow_storm">Nord Snow Storm</button>
+                <button class="theme-btn" data-theme="nord_frost">Nord Frost</button>
+                <button class="theme-btn" data-theme="nord_aurora">Nord Aurora</button>
+            </div>
+        </div>
+
+        <div class="mode-selector">
+            <h2>Modo:</h2>
+            <div class="mode-buttons">
+                <button class="mode-btn active" data-mode="light">Claro</button>
+                <button class="mode-btn" data-mode="dark">Oscuro</button>
+            </div>
+        </div>
+
+        <main class="palette-display">
+            <h2 id="current-theme">GitHub Light Theme</h2>
+            <div class="color-palette">
+                <!-- Color boxes will be populated by JavaScript -->
+            </div>
+            <button id="updateThemeBtn" class="update-theme-btn">Actualizar Tema con Colores Seleccionados</button>
+        </main>
+
+        <section class="mobile-preview">
+            <h2>Previsualización Móvil</h2>
+            <div class="mobile-container">
+                <div class="mobile-screen login-screen">
+                    <div class="mobile-content">
+                        <h3>Iniciar Sesión</h3>
+                        <input type="text" placeholder="Usuario" class="mobile-input">
+                        <input type="password" placeholder="Contraseña" class="mobile-input">
+                        <button class="mobile-btn primary-btn">Ingresar</button>
+                        <button class="mobile-btn secondary-btn">Registrarse</button>
+                        <p class="mobile-text">¿Olvidaste tu contraseña?</p>
+                    </div>
+                </div>
+                <div class="mobile-screen settings-screen">
+                    <div class="mobile-content">
+                        <h3>Ajustes</h3>
+                        <div class="setting-option">
+                            <span>Modo Oscuro</span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="darkModeToggle">
+                                <label for="darkModeToggle"></label>
+                            </div>
+                        </div>
+                        <div class="setting-option">
+                            <span>Notificaciones</span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="notificationToggle" checked>
+                                <label for="notificationToggle"></label>
+                            </div>
+                        </div>
+                        <div class="setting-option">
+                            <span>Idioma</span>
+                            <select class="mobile-select">
+                                <option>Español</option>
+                                <option>English</option>
+                                <option>Français</option>
+                            </select>
+                        </div>
+                        <button class="mobile-btn primary-btn">Guardar</button>
+                    </div>
+                </div>
+                <div class="mobile-screen components-screen">
+                    <div class="mobile-content">
+                        <h3>Componentes</h3>
+                        <button class="mobile-btn primary-btn">Botón Principal</button>
+                        <button class="mobile-btn secondary-btn">Botón Secundario</button>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="check1" checked>
+                            <label for="check1">Opción 1</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Opción 2</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="radio1" name="radio" checked>
+                            <label for="radio1">Opción A</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="radio2" name="radio">
+                            <label for="radio2">Opción B</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="color-picker-container" id="colorPickerContainer">
+            <h3>Selecciona un nuevo color:</h3>
+            <div class="color-options" id="colorOptions">
+                <!-- Color options will be populated by JavaScript -->
+            </div>
+            <div class="custom-color-picker">
+                <input type="color" id="customColorPicker">
+                <button id="applyCustomColor">Aplicar Color</button>
+                <button id="resetColor">Restaurar Color</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
