@@ -5,6 +5,7 @@
 [Comparativa de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
 [Earth-3D](https://carlymx.github.io/pages/esfera-3d/)
 [Sudoku - Tema Nord](https://carlymx.github.io/pages/sudoku-nord/)
+[Péndulo Doble Caótico](https://carlymx.github.io/pages/caotic_pendulum/)
 [WebArena - Modos Claro/Oscuro](https://carlymx.github.io/pages/themes/)
 
 ## Descripción
@@ -24,6 +25,10 @@ Visualización interactiva de una esfera 3D utilizando Three.js que responde al 
 ### Sudoku - Tema Nord
 
 Implementación del juego clásico de Sudoku con tema visual Nord, controles de dificultad y temporizador.
+
+### Péndulo Doble Caótico
+
+Simulación interactiva de un péndulo doble mostrando comportamiento caótico con parámetros ajustables, física en tiempo real y efectos de rastro visual.
 
 ### Temas
 
@@ -62,6 +67,7 @@ pages/
 ├── Arena/           # Proyecto WebArena
 ├── esfera-3d/       # Esfera 3D interactiva
 ├── sudoku-nord/     # Juego de Sudoku con tema Nord
+├── caotic_pendulum/ # Péndulo Doble Caótico
 ├── themes/          # Colección de temas y paletas de colores
 ├── README.md        # Documentación en inglés
 ├── README_ES.md     # Documentación en español

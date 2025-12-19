@@ -8,6 +8,8 @@
 
 [Sudoku - NordTheme](https://carlymx.github.io/pages/sudoku-nord/)
 
+[Chaotic Double Pendulum](https://carlymx.github.io/pages/caotic_pendulum/)
+
 [WebArena - Ligth/Dark modes](https://carlymx.github.io/pages/themes/)
 
 ## Description
@@ -27,6 +29,10 @@ Interactive 3D sphere visualization using Three.js that responds to mouse moveme
 ### Sudoku - Nord Theme
 
 Implementation of the classic Sudoku game with Nord visual theme, difficulty controls and timer.
+
+### Chaotic Double Pendulum
+
+Interactive simulation of a double pendulum showing chaotic behavior with adjustable parameters, real-time physics, and visual trail effects.
 
 ### Themes
 
@@ -65,6 +71,7 @@ pages/
 ├── Arena/           # WebArena Project
 ├── esfera-3d/       # Interactive 3D Sphere
 ├── sudoku-nord/     # Sudoku game with Nord theme
+├── caotic_pendulum/ # Chaotic Double Pendulum
 ├── themes/          # Collection of themes and color palettes
 ├── README.md        # English documentation
 ├── README_ES.md     # Spanish documentation
