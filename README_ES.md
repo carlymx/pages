@@ -7,10 +7,11 @@
 [Sudoku - Tema Nord](https://carlymx.github.io/pages/sudoku-nord/)
 [Péndulo Doble Caótico](https://carlymx.github.io/pages/caotic_pendulum/)
 [WebArena - Modos Claro/Oscuro](https://carlymx.github.io/pages/themes/)
+[NFT Gallery Generator](https://carlymx.github.io/pages/img-generador/)
 
 ## Descripción
 
-Este repositorio contiene una colección de proyectos web interactivos y aplicaciones de demostración. Incluye diferentes aplicaciones como WebArena (explorador de temas de color), esfera 3D interactiva, Sudoku con tema Nord y otros proyectos web.
+Este repositorio contiene una colección de proyectos web interactivos y aplicaciones de demostración. Incluye diferentes aplicaciones como WebArena (explorador de temas de color), esfera 3D interactiva, Sudoku con tema Nord, generador de galería NFT con algoritmos matemáticos y otros proyectos web.
 
 ## Proyectos Destacados
 
@@ -30,6 +31,10 @@ Implementación del juego clásico de Sudoku con tema visual Nord, controles de 
 
 Simulación interactiva de un péndulo doble mostrando comportamiento caótico con parámetros ajustables, física en tiempo real y efectos de rastro visual.
 
+### Generador de Galería NFT
+
+Aplicación web full-stack para generar y visualizar galerías de imágenes NFT con algoritmos matemáticos fractales (Mandelbrot, Julia, Perlin Noise, Sierpinski, Koch Snowflake) y efectos procedurales.
+
 ### Temas
 
 Colección de herramientas para explorar diferentes paletas de colores y modos claro/oscuro.
@@ -41,6 +46,8 @@ Colección de herramientas para explorar diferentes paletas de colores y modos c
 - Temas claro y oscuro
 - Código fuente disponible
 - Documentación en múltiples idiomas
+- Aplicaciones full-stack con procesamiento backend
+- Implementaciones de algoritmos matemáticos
 
 ## Tecnologías Utilizadas
 
@@ -48,13 +55,17 @@ Colección de herramientas para explorar diferentes paletas de colores y modos c
 - CSS3
 - JavaScript (ES6+)
 - Three.js (para gráficos 3D)
+- React (para interfaces modernas)
+- Node.js/Express (para procesamiento backend)
+- JIMP (para procesamiento de imágenes)
 - Web APIs
 
 ## Instalación
 
 1. Clona o descarga los archivos del proyecto
-2. Abre el archivo `index.html` correspondiente en tu navegador web preferido
-3. ¡Comienza a explorar los diferentes proyectos!
+2. Para proyectos estáticos, abre el archivo `index.html` correspondiente en tu navegador web preferido
+3. Para aplicaciones full-stack como el Generador de Galería NFT, sigue las instrucciones específicas de configuración en sus respectivos directorios
+4. ¡Comienza a explorar los diferentes proyectos!
 
 ## Uso
 
@@ -68,6 +79,7 @@ pages/
 ├── esfera-3d/       # Esfera 3D interactiva
 ├── sudoku-nord/     # Juego de Sudoku con tema Nord
 ├── caotic_pendulum/ # Péndulo Doble Caótico
+├── img-generador/   # Generador de Galería NFT (Full-stack)
 ├── themes/          # Colección de temas y paletas de colores
 ├── README.md        # Documentación en inglés
 ├── README_ES.md     # Documentación en español

@@ -1,0 +1,24 @@
+[debug] [2026-01-17T03:39:51.535Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.537Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:39:51.556Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.556Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:39:51.578Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.578Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:39:51.579Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.579Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:39:51.595Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.595Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:39:51.596Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:39:51.596Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:16.983Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:16.985Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:16.997Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:16.997Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:17.018Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:17.018Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:17.018Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:17.019Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:17.021Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:17.021Z] > authorizing via signed-in user (global.pinball@gmail.com)
+[debug] [2026-01-17T03:40:17.022Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-17T03:40:17.022Z] > authorizing via signed-in user (global.pinball@gmail.com)
