@@ -3,10 +3,15 @@
 # pages
 
 [Comparativa de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
+
 [Earth-3D](https://carlymx.github.io/pages/esfera-3d/)
+
 [Sudoku - Tema Nord](https://carlymx.github.io/pages/sudoku-nord/)
+
 [Péndulo Doble Caótico](https://carlymx.github.io/pages/caotic_pendulum/caotic_pendulum.html)
+
 [WebArena - Modos Claro/Oscuro](https://carlymx.github.io/pages/themes/)
+
 [NFT Gallery Generator](https://carlymx.github.io/pages/img-generador/)
 
 ## Descripción
