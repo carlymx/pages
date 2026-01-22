@@ -10,7 +10,7 @@
 
 [Sudoku - NordTheme](https://carlymx.github.io/pages/sudoku-nord/)
 
-[Chaotic Double Pendulum](https://carlymx.github.io/pages/caotic_pendulum/)
+[Chaotic Double Pendulum](https://carlymx.github.io/pages/caotic_pendulum/caotic_pendulum.html)
 
 [WebArena - Ligth/Dark modes](https://carlymx.github.io/pages/themes/)
 
