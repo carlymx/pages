@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Bases</title>
+  <style>
+    :root { --bg: #fff; --text: #333; --card: #f5f5f5; --border: #ddd; --accent: #3b82f6; --accent-light: #e0e7ff; }
+    [data-theme="dark"] { --bg: #1a1a1a; --text: #eee; --card: #2a2a2a; --border: #444; --accent: #60a5fa; --accent-light: #1e3a5f; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; transition: 0.3s; }
+    .container { max-width: 550px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    h1 { font-size: 1.3rem; }
+    .btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+    .btn:hover { background: var(--accent); color: #fff; }
+    .card { background: var(--card); border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+    label { display: block; margin-bottom: 8px; font-weight: 500; }
+    input { width: 100%; padding: 15px; font-size: 1.4rem; font-family: monospace; background: var(--bg); color: var(--text); border: 2px solid var(--border); border-radius: 8px; outline: none; }
+    input:focus { border-color: var(--accent); }
+    .input-wrap { position: relative; }
+    .result { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--bg); border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--border); }
+    .result-label { font-size: 0.8rem; opacity: 0.7; }
+    .result-value { font-family: monospace; font-size: 1.1rem; }
+    .copy-btn { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 1.2rem; padding: 5px; }
+    .copy-btn:hover { background: var(--card); border-radius: 4px; }
+    .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .history-title { font-size: 1rem; }
+    .history-actions { display: flex; gap: 5px; }
+    .history-list { max-height: 250px; overflow-y: auto; }
+    .history-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--border); }
+    .history-item:last-child { border-bottom: none; }
+    .history-input { font-family: monospace; font-size: 0.95rem; }
+    .history-time { font-size: 0.75rem; opacity: 0.6; }
+    .empty { text-align: center; padding: 20px; opacity: 0.5; }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 20px; border-radius: 6px; opacity: 0; transition: 0.3s; pointer-events: none; }
+    .toast.show { opacity: 1; }
+    .base-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .base-option { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 5px; cursor: pointer; font-size: 0.85rem; font-family: monospace; }
+    .base-option:hover { border-color: var(--accent); }
+    .base-option.selected { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .base-option.default { background: var(--accent-light); }
+    @media (max-width: 500px) { header { flex-direction: column; gap: 10px; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="title">🔢 Conversor</h1>
+      <div>
+        <span id="counter">0</span>
+        <select class="btn" id="defaultBaseSelect" style="background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px;">
+          <option value="2">Base 2</option>
+          <option value="8">Base 8</option>
+          <option value="10" selected>Base 10</option>
+          <option value="12">Base 12</option>
+          <option value="16">Base 16</option>
+          <option value="60">Base 60</option>
+        </select>
+        <button class="btn" id="themeBtn">🌙</button>
+        <button class="btn" id="langBtn">EN</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <label id="inputLabel">🔢 Numero:</label>
+      <div class="input-wrap">
+        <input type="text" id="input" placeholder="1A, 255, 0xFF...">
+      </div>
+      <div class="base-options" id="baseOptions"></div>
+    </div>
+
+    <div class="card">
+      <div class="result"><div><span class="result-label" id="label10">Decimal</span><br><span class="result-value" id="r10">-</span></div><button class="copy-btn" data-id="r10">📋</button></div>
+      <div class="result"><div><span class="result-label" id="label2">Binario (2)</span><br><span class="result-value" id="r2">-</span></div><button class="copy-btn" data-id="r2">📋</button></div>
+      <div class="result"><div><span class="result-label" id="label8">Base 8</span><br><span class="result-value" id="r8">-</span></div><button class="copy-btn" data-id="r8">📋</button></div>
+      <div class="result"><div><span class="result-label" id="label12">Base 12</span><br><span class="result-value" id="r12">-</span></div><button class="copy-btn" data-id="r12">📋</button></div>
+      <div class="result"><div><span class="result-label" id="label16">Base 16</span><br><span class="result-value" id="r16">-</span></div><button class="copy-btn" data-id="r16">📋</button></div>
+      <div class="result"><div><span class="result-label" id="label60">Base 60</span><br><span class="result-value" id="r60">-</span></div><button class="copy-btn" data-id="r60">📋</button></div>
+    </div>
+
+    <div class="card">
+      <div class="history-header">
+        <span class="history-title" id="historyTitle">📜 Historial</span>
+        <div class="history-actions">
+          <button class="btn" id="exportBtn">CSV</button>
+          <button class="btn" id="clearBtn">🗑️</button>
+        </div>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copiado</div>
+
+  <script>
+    const CHARS60 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+    const T = {
+      es: {
+        title: '🔢 Conversor',
+        inputLabel: '🔢 Numero:',
+        label10: 'Decimal',
+        label2: 'Binario (2)',
+        label8: 'Base 8',
+        label12: 'Base 12',
+        label16: 'Base 16',
+        label60: 'Base 60',
+        historyTitle: '📜 Historial',
+        empty: 'Sin conversiones',
+        copied: 'Copiado',
+        placeholder: '1A, 255, 0xFF...'
+      },
+      en: {
+        title: '🔢 Converter',
+        inputLabel: '🔢 Number:',
+        label10: 'Decimal',
+        label2: 'Binary (2)',
+        label8: 'Base 8',
+        label12: 'Base 12',
+        label16: 'Base 16',
+        label60: 'Base 60',
+        historyTitle: '📜 History',
+        empty: 'No conversions',
+        copied: 'Copied',
+        placeholder: '1A, 255, 0xFF...'
+      }
+    };
+
+    let state = {
+      lang: localStorage.getItem('lang') || 'es',
+      history: JSON.parse(localStorage.getItem('history') || '[]'),
+      count: parseInt(localStorage.getItem('count') || '0'),
+      lastInput: '',
+      selectedBase: null,
+      defaultBase: parseInt(localStorage.getItem('defaultBase') || '10')
+    };
+
+    function getDigitValue(c) {
+      if (c >= '0' && c <= '9') return c.charCodeAt(0) - 48;
+      if (c >= 'A' && c <= 'Z') return c.charCodeAt(0) - 55;
+      if (c >= 'a' && c <= 'z') return c.charCodeAt(0) - 61;
+      return -1;
+    }
+
+    function isValidForBase(s, base) {
+      for (const c of s) {
+        const val = getDigitValue(c);
+        if (val < 0 || val >= base) return false;
+      }
+      return true;
+    }
+
+    function stringToDecimal(s, base) {
+      let n = 0n;
+      for (const c of s.toUpperCase()) {
+        const val = getDigitValue(c);
+        if (val < 0 || val >= base) return null;
+        n = n * BigInt(base) + BigInt(val);
+      }
+      return n;
+    }
+
+    function getPossibleBases(s) {
+      const trimmed = s.trim();
+      if (!trimmed) return [];
+
+      // Extraer signo
+      let sign = 1;
+      let value = trimmed;
+      if (trimmed.startsWith('-')) {
+        sign = -1;
+        value = trimmed.slice(1);
+      } else if (trimmed.startsWith('+')) {
+        sign = 1;
+        value = trimmed.slice(1);
+      }
+      const upperValue = value.toUpperCase();
+
+      let result = [];
+      let forcedBase = null;
+
+      if (upperValue.startsWith('0X') && upperValue.length > 2 && isValidForBase(upperValue.slice(2), 16)) {
+        result.push({ base: 16, val: upperValue.slice(2), sign: sign });
+        forcedBase = 16;
+      }
+      if (upperValue.startsWith('0B') && upperValue.length > 2 && isValidForBase(upperValue.slice(2), 2)) {
+        result.push({ base: 2, val: upperValue.slice(2), sign: sign });
+        forcedBase = 2;
+      }
+      if (upperValue.startsWith('0T') && upperValue.length > 2 && isValidForBase(upperValue.slice(2), 12)) {
+        result.push({ base: 12, val: upperValue.slice(2), sign: sign });
+        forcedBase = 12;
+      }
+      if (upperValue.startsWith('0S') && upperValue.length > 2 && isValidForBase(upperValue.slice(2), 60)) {
+        result.push({ base: 60, val: upperValue.slice(2), sign: sign });
+        forcedBase = 60;
+      }
+
+      if (!forcedBase) {
+        // Solo verificar bases comunes: 2, 8, 10, 12, 16, 60
+        const commonBases = [2, 8, 10, 12, 16, 60];
+        for (const base of commonBases) {
+          if (isValidForBase(upperValue, base)) {
+            result.push({ base: base, val: upperValue, sign: sign });
+          }
+        }
+      } else {
+        // Para prefijos forzados, añadir otras bases comunes válidas
+        const commonBases = [2, 8, 10, 12, 16, 60];
+        const seen = new Set([forcedBase]);
+        for (const base of commonBases) {
+          if (base !== forcedBase && isValidForBase(upperValue, base) && !seen.has(base)) {
+            result.push({ base: base, val: upperValue, sign: sign });
+            seen.add(base);
+          }
+        }
+      }
+
+      result.sort((a, b) => a.base - b.base);
+      return result;
+    }
+
+    function getDecimalValue(baseObj) {
+      const dec = stringToDecimal(baseObj.val, baseObj.base);
+      return dec !== null ? dec * BigInt(baseObj.sign) : null;
+    }
+
+    function from60(n) {
+      if (n === 0n) return '0';
+      const neg = n < 0n;
+      n = neg ? -n : n;
+      let r = '';
+      while (n > 0n) {
+        r = CHARS60[Number(n % 60n)] + r;
+        n = n / 60n;
+      }
+      return neg ? '-' + r : r;
+    }
+
+    function convert(input, forcedBase) {
+      const possible = getPossibleBases(input);
+      if (possible.length === 0) return null;
+
+      let chosen;
+      if (forcedBase) {
+        chosen = possible.find(b => b.base === forcedBase);
+      } else if (possible.length > 1) {
+        // Priorizar defaultBase si está disponible y no es prefijo forzado
+        chosen = possible.find(b => b.base === state.defaultBase) || possible[0];
+      } else {
+        chosen = possible[0];
+      }
+      if (!chosen) return null;
+
+      let dec = getDecimalValue(chosen);
+      if (dec === null) return null;
+
+      return {
+        input: input.trim(),
+        decimal: dec,
+        bases: {
+          10: dec.toString(),
+          2: dec.toString(2),
+          8: dec.toString(8),
+          12: dec.toString(12).toUpperCase(),
+          16: dec.toString(16).toUpperCase(),
+          60: from60(typeof dec === 'bigint' ? dec : BigInt(dec))
+        },
+        possible: possible,
+        selectedBase: chosen.base
+      };
+    }
+
+    function showOptions(r) {
+      const container = document.getElementById('baseOptions');
+      if (!r || r.possible.length <= 1) {
+        container.innerHTML = '';
+        return;
+      }
+
+      container.innerHTML = r.possible.map(b => {
+        const dec = getDecimalValue(b);
+        const isSelected = b.base === r.selectedBase;
+        const isDefault = b.base === state.defaultBase;
+        return `<div class="base-option ${isSelected ? 'selected' : ''} ${isDefault ? 'default' : ''}" data-base="${b.base}">${dec}(${b.base})</div>`;
+      }).join('');
+
+      container.querySelectorAll('.base-option').forEach(opt => {
+        opt.onclick = function() {
+          const base = parseInt(this.getAttribute('data-base'));
+          const input = document.getElementById('input').value;
+          const r = convert(input, base);
+          state.selectedBase = base;
+          show(r);
+          save(r);
+        };
+      });
+    }
+
+    function show(r) {
+      if (!r) {
+        ['r10', 'r2', 'r8', 'r12', 'r16', 'r60'].forEach(id => document.getElementById(id).textContent = '-');
+        document.getElementById('baseOptions').innerHTML = '';
+        return;
+      }
+      document.getElementById('r10').textContent = r.bases[10];
+      document.getElementById('r2').textContent = r.bases[2];
+      document.getElementById('r8').textContent = r.bases[8];
+      document.getElementById('r12').textContent = r.bases[12];
+      document.getElementById('r16').textContent = r.bases[16];
+      document.getElementById('r60').textContent = r.bases[60];
+      showOptions(r);
+    }
+
+    function updateConversion() {
+      const input = document.getElementById('input').value;
+      const r = convert(input, state.selectedBase);
+      show(r);
+    }
+
+    function save(r) {
+      state.history.unshift({
+        id: Date.now(),
+        input: r.input,
+        decimal: r.decimal.toString(),
+        bases: r.bases,
+        time: new Date().toISOString()
+      });
+      localStorage.setItem('history', JSON.stringify(state.history));
+      state.count++;
+      localStorage.setItem('count', state.count.toString());
+      document.getElementById('counter').textContent = state.count;
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const list = document.getElementById('historyList');
+      if (state.history.length === 0) {
+        list.innerHTML = '<div class="empty">' + T[state.lang].empty + '</div>';
+        return;
+      }
+      list.innerHTML = state.history.slice(0, 50).map(h => {
+        const time = new Date(h.time).toLocaleTimeString(state.lang === 'es' ? 'es' : 'en', { hour: '2-digit', minute: '2-digit' });
+        return '<div class="history-item"><div><span class="history-input">' + h.input + ' -> ' + h.decimal + '</span><br><span class="history-time">' + time + '</span></div><button class="copy-btn" data-in="' + h.input + '">📋</button></div>';
+      }).join('');
+      list.querySelectorAll('[data-in]').forEach(b => {
+        b.onclick = function() {
+          const r = convert(this.getAttribute('data-in'));
+          if (r) copy(r.decimal.toString());
+        };
+      });
+    }
+
+    function copy(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = T[state.lang].copied;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      });
+    }
+
+    function exportCSV() {
+      if (state.history.length === 0) return;
+      let csv = 'Date,Time,Input,Decimal,Binary,Base8,Base12,Base16,Base60\n';
+      state.history.forEach(h => {
+        const d = new Date(h.time);
+        csv += d.toLocaleDateString('en-GB') + ',' + d.toLocaleTimeString('en-GB') + ',' + h.input + ',' + h.decimal + ',' + h.bases[2] + ',' + h.bases[8] + ',' + h.bases[12] + ',' + h.bases[16] + ',' + h.bases[60] + '\n';
+      });
+      const a = document.createElement('a');
+      a.href = 'data:text/csv,' + encodeURIComponent(csv);
+      a.download = 'conversiones.csv';
+      a.click();
+    }
+
+    function applyTheme() {
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('themeBtn').textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function applyDefaults() {
+      document.getElementById('defaultBaseSelect').value = state.defaultBase;
+    }
+
+    function applyLang() {
+      state.lang = localStorage.getItem('lang') || 'es';
+      const txt = T[state.lang];
+      document.getElementById('title').textContent = txt.title;
+      document.getElementById('inputLabel').textContent = txt.inputLabel;
+      document.getElementById('input').placeholder = txt.placeholder;
+      document.getElementById('label10').textContent = txt.label10;
+      document.getElementById('label2').textContent = txt.label2;
+      document.getElementById('label8').textContent = txt.label8;
+      document.getElementById('label12').textContent = txt.label12;
+      document.getElementById('label16').textContent = txt.label16;
+      document.getElementById('label60').textContent = txt.label60;
+      document.getElementById('historyTitle').textContent = txt.historyTitle;
+      document.getElementById('langBtn').textContent = state.lang === 'es' ? 'EN' : 'ES';
+      document.getElementById('counter').textContent = state.count;
+      renderHistory();
+    }
+
+    document.getElementById('input').addEventListener('input', function(e) {
+      state.selectedBase = null;
+      updateConversion();
+    });
+
+    document.querySelectorAll('.copy-btn[data-id]').forEach(b => {
+      b.onclick = function() {
+        const v = document.getElementById(this.getAttribute('data-id')).textContent;
+        if (v && v !== '-') copy(v);
+      };
+    });
+
+    document.getElementById('themeBtn').onclick = function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme();
+    };
+
+    document.getElementById('defaultBaseSelect').onchange = function() {
+      state.defaultBase = parseInt(this.value);
+      localStorage.setItem('defaultBase', state.defaultBase);
+    };
+
+    document.getElementById('langBtn').onclick = function() {
+      const next = state.lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', next);
+      applyLang();
+    };
+
+    document.getElementById('exportBtn').onclick = exportCSV;
+
+    document.getElementById('clearBtn').onclick = function() {
+      state.history = [];
+      state.count = 0;
+      localStorage.setItem('history', '[]');
+      localStorage.setItem('count', '0');
+      document.getElementById('counter').textContent = '0';
+      renderHistory();
+    };
+
+    applyTheme();
+    applyLang();
+    applyDefaults();
+  </script>
+</body>
+</html>

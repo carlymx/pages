@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generar Iconos PWA</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f0f0f0; }
+    canvas { margin: 10px; border: 1px solid #ccc; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px; }
+    .instructions { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="instructions">
+    <h2>Generar Iconos PWA</h2>
+    <p>Este script genera los iconos necesarios para la PWA.</p>
+    <p>Haz clic derecho en cada imagen y selecciona "Guardar imagen como..."</p>
+    <p>Guarda como: <strong>icon-192.png</strong> y <strong>icon-512.png</strong></p>
+  </div>
+
+  <button onclick="downloadAll()">📥 Descargar todos los iconos</button>
+
+  <h3>Icono 192x192</h3>
+  <canvas id="canvas192" width="192" height="192"></canvas>
+
+  <h3>Icono 512x512</h3>
+  <canvas id="canvas512" width="512" height="512"></canvas>
+
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#3b82f6');
+      gradient.addColorStop(1, '#2563eb');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+
+      // Rounded corners
+      ctx.globalCompositeOperation = 'destination-in';
+      const cornerRadius = size * 0.2;
+      ctx.beginPath();
+      ctx.moveTo(cornerRadius, 0);
+      ctx.lineTo(size - cornerRadius, 0);
+      ctx.quadraticCurveTo(size, 0, size, cornerRadius);
+      ctx.lineTo(size, size - cornerRadius);
+      ctx.quadraticCurveTo(size, size, size - cornerRadius, size);
+      ctx.lineTo(cornerRadius, size);
+      ctx.quadraticCurveTo(0, size, 0, size - cornerRadius);
+      ctx.lineTo(0, cornerRadius);
+      ctx.quadraticCurveTo(0, 0, cornerRadius, 0);
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+
+      // Circle background
+      const circleSize = size * 0.55;
+      const circleX = size / 2;
+      const circleY = size / 2 - size * 0.05;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.beginPath();
+      ctx.arc(circleX, circleY, circleSize / 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // "60" text
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      const fontSize = size * 0.3;
+      ctx.font = `bold ${fontSize}px Arial`;
+
+      // Shadow
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      ctx.shadowBlur = size * 0.03;
+      ctx.shadowOffsetY = size * 0.02;
+
+      ctx.fillText('60', circleX, circleY);
+
+      ctx.shadowColor = 'transparent';
+    }
+
+    function downloadImage(canvas, filename) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function downloadAll() {
+      downloadImage(document.getElementById('canvas192'), 'icon-192.png');
+      downloadImage(document.getElementById('canvas512'), 'icon-512.png');
+    }
+
+    // Draw icons
+    drawIcon(document.getElementById('canvas192'));
+    drawIcon(document.getElementById('canvas512'));
+
+    console.log('Iconos generados. Haz clic derecho para guardar.');
+  </script>
+</body>
+</html>

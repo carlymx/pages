@@ -2,6 +2,8 @@
 
 # pages
 
+[Base60 - Number Base Converter](https://carlymx.github.io/pages/base60/)
+
 [Comparative de Frameworks CSS - WebARENA](https://carlymx.github.io/pages/arena/)
 
 [Earth-3D](https://carlymx.github.io/pages/esfera-3d/)
@@ -16,9 +18,13 @@
 
 ## Description
 
-This repository contains a collection of interactive web projects and demonstration applications. It includes different applications such as WebArena (color theme explorer), interactive 3D sphere, Sudoku with Nord theme, NFT gallery generator with mathematical algorithms and other web projects.
+This repository contains a collection of interactive web projects and demonstration applications. It includes different applications such as Base60 (number base converter), WebArena (color theme explorer), interactive 3D sphere, Sudoku with Nord theme, NFT gallery generator with mathematical algorithms and other web projects.
 
 ## Featured Projects
+
+### Base60 - Number Base Converter
+
+Web application for converting numbers between different bases (Decimal, Binary, Octal, Duodecimal, Hexadecimal, and Base 60) with real-time conversion, automatic base detection, bilingual interface (Spanish/English), dark/light theme support, conversion history with CSV export, and offline PWA capability.
 
 ### WebArena - Light/Dark Modes
 
@@ -80,6 +86,7 @@ Each subdirectory contains an independent project with its own usage instruction
 
 ```
 pages/
+├── base60/          # Number base converter (vanilla JS)
 ├── Arena/           # WebArena Project
 ├── esfera-3d/       # Interactive 3D Sphere
 ├── sudoku-nord/     # Sudoku game with Nord theme
